@@ -30,13 +30,13 @@ spec:
             configMapKeyRef:
               name: database-configmap
               key: database_password
-              resources:
-        limits:
-          memory: "128Mi"
-          cpu: "0.2"
-        requests:
-          memory: "30Mi"
-          cpu: "0.05"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "0.2"
+          requests:
+            memory: "30Mi"
+            cpu: "0.05"
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: postgres-persistent-storage
