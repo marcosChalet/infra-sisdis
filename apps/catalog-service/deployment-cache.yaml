@@ -19,11 +19,11 @@ spec:
         image: redis:7.2-alpine3.18
         ports:
         - containerPort: 6379
-      resources:
-      limits:
-        memory: "128Mi"
-        cpu: "0.2"
-      requests:
-        memory: "30Mi"
-        cpu: "0.05"
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "0.2"
+          requests:
+            memory: "30Mi"
+            cpu: "0.05"
 
