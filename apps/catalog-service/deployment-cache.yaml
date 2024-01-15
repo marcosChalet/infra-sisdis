@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cache-service
+  labels:
+    app: cache-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cache-service
+  template:
+    metadata:
+      labels:
+        app: cache-service
+    spec:
+      containers:
+      - name: cache-service
+        image: redis:7.2-alpine3.18
+        ports:
+        - containerPort: 6379
+      resources:
+      limits:
+        memory: "128Mi"
+        cpu: "0.2"
+      requests:
+        memory: "30Mi"
+        cpu: "0.05"
+

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-catalog
+  labels:
+    app: ms-catalog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-catalog
+  template:
+    metadata:
+      labels:
+        app: ms-catalog
+    spec:
+      containers:
+      - name: ms-catalog
+        image: marcoschalet/catalog-service:v1.0.0
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: catalog-configmap
+              key: database_url
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: catalog-configmap
+              key: redis_host
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: catalog-configmap
+              key: redis_port
+        - name: NPM_RUN_COMMAND
+          valueFrom:
+            configMapKeyRef:
+              name: catalog-configmap
+              key: npm_run_command
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "0.25"
+          requests:
+            memory: "130Mi"
+            cpu: "0.1"
+
