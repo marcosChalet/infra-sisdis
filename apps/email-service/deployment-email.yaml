@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-email
+  labels:
+    app: ms-email
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-email
+  template:
+    metadata:
+      labels:
+        app: ms-email
+    spec:
+      containers:
+      - name: ms-email
+        image: marcoschalet/email-service:v1.0.0
+        ports:
+        - containerPort: 3000
+        env:
+        - name: EMAIL_FROM
+          valueFrom:
+            configMapKeyRef:
+              name: email-configmap
+              key: email_from
+        - name: EMAIL_TO
+          valueFrom:
+            configMapKeyRef:
+              name: email-configmap
+              key: email_to
+        - name: EMAIL_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: email-configmap
+              key: email_password
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: email-configmap
+              key: redis_host
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: email-configmap
+              key: redis_port
+        - name: NPM_RUN_COMMAND
+          valueFrom:
+            configMapKeyRef:
+              name: email-configmap
+              key: npm_run_command
+        resources:
+          limits:
+            memory: "186Mi"
+            cpu: "0.25"
+          requests:
+            memory: "130Mi"
+            cpu: "0.1"
