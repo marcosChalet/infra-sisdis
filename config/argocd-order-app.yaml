@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: order
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/marcosChalet/infra-sisdis.git
+    targetRevision: develop
+    path: apps/order-service
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: order
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
