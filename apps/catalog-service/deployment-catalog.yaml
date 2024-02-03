@@ -41,7 +41,7 @@ spec:
               name: catalog-configmap
               key: npm_run_command
         initContainers:
-        - name: wait-for-mysql
+        - name: wait-for-database
           image: stefanevinance/wait-for-200
           env:
           - name: URL
