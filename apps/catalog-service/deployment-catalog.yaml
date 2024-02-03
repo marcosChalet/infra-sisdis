@@ -40,6 +40,13 @@ spec:
             configMapKeyRef:
               name: catalog-configmap
               key: npm_run_command
+        initContainers:
+        - name: wait-for-mysql
+          image: stefanevinance/wait-for-200
+          env:
+          - name: URL
+            value: postgres://postgres:mypassword@database:5432
+
         resources:
           limits:
             memory: "280Mi"
