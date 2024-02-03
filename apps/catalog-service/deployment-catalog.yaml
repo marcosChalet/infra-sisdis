@@ -47,10 +47,3 @@ spec:
           requests:
             memory: "180Mi"
             cpu: "0.2"
-        volumeMounts:
-        - mountPath: /var/lib/postgresql/data
-          name: postgres-persistent-storage
-      volumes:
-      - name: postgres-persistent-storage
-        persistentVolumeClaim:
-          claimName: database-pvc
