@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/marcosChalet/infra-sisdis.git
-    targetRevision: develop
+    targetRevision: develop-test
     path: apps/catalog-service
   destination:
     server: https://kubernetes.default.svc
