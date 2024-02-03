@@ -1,7 +1,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: database-pv
+  name: database-catalog-pv
   labels:
     type: local
 spec:
@@ -11,12 +11,12 @@ spec:
   accessModes:
   - ReadWriteOnce
   hostPath:
-    path: "/data/psql"
+    path: "/data/psql/catalog"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: database-pvc
+  name: database-catalog-pvc
 spec:
   storageClassName: manual
   accessModes:

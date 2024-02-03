@@ -48,4 +48,4 @@ spec:
       volumes:
       - name: postgres-persistent-storage
         persistentVolumeClaim:
-          claimName: database-pvc
+          claimName: database-catalog-pvc
