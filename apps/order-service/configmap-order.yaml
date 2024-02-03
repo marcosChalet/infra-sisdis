@@ -1,0 +1,7 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: order-configmap
+data:
+  database_url: postgres://postgres:mypassword@ms-database.database.svc.cluster.local:5432/order?schema=public
+  npm_run_command: npm run start:migrate:dev
