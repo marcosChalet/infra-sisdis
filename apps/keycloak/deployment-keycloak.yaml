@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  selector:
+    matchLabels:
+      app: keycloak
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      containers:
+      - name: keycloak
+        image: marcoschalet/login-service:latest
+        ports:
+        - containerPort: 8080
+        args:
+        - "start-dev"
+        env:
+        - name: KC_DB_URL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: keycloak-configmap
+              key: postgres_db
+        - name: KC_DB_URL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: keycloak-configmap
+              key: postgres_host
+        - name: KC_DB_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: keycloak-configmap
+              key: postgres_user
+        - name: KC_DB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: keycloak-configmap
+              key: postgres_password
+        - name: KEYCLOAK_ADMIN
+          value: admin
+        - name: KEYCLOAK_ADMIN_PASSWORD
+          value: admin
+        - name: KC_DB_URL_SCHEMA
+          value: public
+        resources:
+          limits:
+            memory: "600Mi"
+            cpu: "1.5"
+          requests:
+            memory: "200Mi"
+            cpu: "0.5"

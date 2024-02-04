@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: keycloak-configmap
+data:
+  postgres_url: postgres://database:5432
+  postgres_user: postgres
+  postgres_password: postgres
+  postgres_db: keycloak
+  postgres_host: database
+  postgres_port: "5432"
