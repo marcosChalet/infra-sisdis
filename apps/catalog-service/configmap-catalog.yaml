@@ -6,4 +6,4 @@ data:
   database_url: postgres://postgres:mypassword@database:5432/catalog?schema=public
   redis_host: cache-service
   redis_port: "6379"
-  npm_run_command: npm run start:dev
+  npm_run_command: npm run start:migrate:dev

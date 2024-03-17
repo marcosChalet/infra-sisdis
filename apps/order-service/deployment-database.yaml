@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-database
+  name: database
   labels:
-    app: ms-database
+    app: database
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-database
+      app: database
   template:
     metadata:
       labels:
-        app: ms-database
+        app: database
     spec:
       containers:
-      - name: ms-database
+      - name: database
         image: postgres:15.5-alpine
         ports:
         - containerPort: 5432
@@ -30,6 +30,11 @@ spec:
             configMapKeyRef:
               name: database-configmap
               key: database_password
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: database-configmap
+              key: database
         resources:
           limits:
             memory: "128Mi"
@@ -43,4 +48,4 @@ spec:
       volumes:
       - name: postgres-persistent-storage
         persistentVolumeClaim:
-          claimName: database-pvc
+          claimName: database-order-pvc

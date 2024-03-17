@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ms-catalog
-        image: marcoschalet/catalog-service:v1.0.1
+        image: marcoschalet/catalog-service:v1.0.2
         ports:
         - containerPort: 3000
         env:
@@ -47,4 +47,3 @@ spec:
           requests:
             memory: "180Mi"
             cpu: "0.2"
-

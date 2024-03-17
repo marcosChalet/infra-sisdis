@@ -1,26 +1,26 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: database-catalog-pv
+  name: database-keycloak-pv
   labels:
     type: local
 spec:
   storageClassName: manual
   capacity:
-    storage: 100Mi
+    storage: 300Mi
   accessModes:
   - ReadWriteOnce
   hostPath:
-    path: "/data/psql/catalog"
+    path: "/data/psql/keycloak"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: database-catalog-pvc
+  name: database-keycloak-pvc
 spec:
   storageClassName: manual
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 100Mi
+      storage: 300Mi
