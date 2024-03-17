@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msg-broker
+  labels:
+    app: msg-broker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: msg-broker
+  template:
+    metadata:
+      labels:
+        app: msg-broker
+    spec:
+      containers:
+      - name: msg-broker
+        image: rabbitmq:3-management
+        ports:
+        - containerPort: 5672
+        - containerPort: 15672
+        resources:
+          limits:
+            memory: "500Mi"
+            cpu: "0.5"
+          requests:
+            memory: "180Mi"
+            cpu: "0.2"
+        volumeMounts:
+        - mountPath: /var/lib/broker/data
+          name: broker-persistent-storage
+      volumes:
+      - name: broker-persistent-storage
+        persistentVolumeClaim:
+          claimName: broker-pvc
