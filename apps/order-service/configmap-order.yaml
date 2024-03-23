@@ -4,5 +4,5 @@ metadata:
   name: order-configmap
 data:
   database_url: postgres://postgres:mypassword@database:5432/order?schema=public
-  rmq_urls: "amqp://msg-broker.msg-broker.default.svc.cluster.local:5672"
+  rmq_urls: "amqp://msg-broker.default.svc.cluster.local:5672"
   npm_run_command: npm run start:migrate:dev
