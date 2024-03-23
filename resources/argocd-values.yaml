@@ -3,4 +3,6 @@ server:
     enabled: true
     ingressClassName: "kong"
     hosts:
-      - argocd.local
+    - argocd.local
+  config:
+    log_level: debug
