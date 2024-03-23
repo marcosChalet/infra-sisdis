@@ -45,6 +45,11 @@ spec:
             configMapKeyRef:
               name: email-configmap
               key: redis_port
+        - name: RMQ_URLS
+          valueFrom:
+            configMapKeyRef:
+              name: email-configmap
+              key: rmq_urls
         - name: NPM_RUN_COMMAND
           valueFrom:
             configMapKeyRef:

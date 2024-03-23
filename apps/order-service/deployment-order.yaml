@@ -25,6 +25,11 @@ spec:
             configMapKeyRef:
               name: order-configmap
               key: database_url
+        - name: RMQ_URLS
+          valueFrom:
+            configMapKeyRef:
+              name: order-configmap
+              key: rmq_urls
         - name: NPM_RUN_COMMAND
           valueFrom:
             configMapKeyRef:
