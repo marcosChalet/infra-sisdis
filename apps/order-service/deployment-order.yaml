@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ms-order
-        image: marcoschalet/order-service:v1.0.1
+        image: marcoschalet/order-service:v2.0.0
         ports:
         - containerPort: 3000
         env:
