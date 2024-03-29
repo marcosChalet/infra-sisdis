@@ -8,5 +8,5 @@ data:
   email_password: "lvbwatxhzszckxec"
   redis_host: cache-service
   redis_port: "6379"
-  rmq_urls: "amqp://10.96.232.148:5672"
+  rmq_urls: "amqp://msg-broker.msg-broker.svc.cluster.local:5672"
   npm_run_command: npm run start:dev
