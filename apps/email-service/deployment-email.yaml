@@ -57,8 +57,8 @@ spec:
               key: npm_run_command
         resources:
           limits:
-            memory: "186Mi"
-            cpu: "0.25"
+            memory: "500Mi"
+            cpu: "0.85"
           requests:
-            memory: "130Mi"
-            cpu: "0.1"
+            memory: "250Mi"
+            cpu: "0.4"
