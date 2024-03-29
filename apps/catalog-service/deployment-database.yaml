@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: database
+  name: database-catalog
   labels:
-    app: database
+    app: database-catalog
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: database
+      app: database-catalog
   template:
     metadata:
       labels:
-        app: database
+        app: database-catalog
     spec:
       containers:
-      - name: database
+      - name: database-catalog
         image: postgres:15.5-alpine
         ports:
         - containerPort: 5432
