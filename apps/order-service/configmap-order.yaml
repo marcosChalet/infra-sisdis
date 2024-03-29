@@ -5,5 +5,5 @@ metadata:
 data:
   database_url: postgres://postgres:mypassword@database:5432/order?schema=public
   rmq_urls: "amqp://msg-broker.default.svc.cluster.local:5672"
-  email_service_route: ms-email.email.svc.cluster.local/send
+  email_service_route: http://ms-email.email.svc.cluster.local/send
   npm_run_command: npm run start:migrate:dev
