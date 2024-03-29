@@ -30,6 +30,11 @@ spec:
             configMapKeyRef:
               name: order-configmap
               key: rmq_urls
+        - name: EMAIL_SERVICE_ROUTE
+          valueFrom:
+            configMapKeyRef:
+              name: order-configmap
+              key: email_service_route
         - name: NPM_RUN_COMMAND
           valueFrom:
             configMapKeyRef:
