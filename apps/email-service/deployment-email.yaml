@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ms-email
-        image: marcoschalet/email-service:v1.0.1
+        image: marcoschalet/email-service:v2.0.0
         ports:
         - containerPort: 3000
         env:
@@ -45,6 +45,11 @@ spec:
             configMapKeyRef:
               name: email-configmap
               key: redis_port
+        - name: RMQ_URLS
+          valueFrom:
+            configMapKeyRef:
+              name: email-configmap
+              key: rmq_urls
         - name: NPM_RUN_COMMAND
           valueFrom:
             configMapKeyRef:
@@ -52,8 +57,8 @@ spec:
               key: npm_run_command
         resources:
           limits:
-            memory: "186Mi"
-            cpu: "0.25"
+            memory: "500Mi"
+            cpu: "0.85"
           requests:
-            memory: "130Mi"
-            cpu: "0.1"
+            memory: "250Mi"
+            cpu: "0.4"

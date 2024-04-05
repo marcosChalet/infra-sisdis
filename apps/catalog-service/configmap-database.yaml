@@ -7,5 +7,5 @@ data:
   database: catalog
   database_user: postgres
   database_password: mypassword
-  database_host: database
+  database_host: database-catalog
   database_port: "5432"

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: ms-order
-        image: marcoschalet/order-service:v1.0.1
+        image: marcoschalet/order-service:v2.0.0
         ports:
         - containerPort: 3000
         env:
@@ -25,6 +25,16 @@ spec:
             configMapKeyRef:
               name: order-configmap
               key: database_url
+        - name: RMQ_URLS
+          valueFrom:
+            configMapKeyRef:
+              name: order-configmap
+              key: rmq_urls
+        - name: EMAIL_SERVICE_ROUTE
+          valueFrom:
+            configMapKeyRef:
+              name: order-configmap
+              key: email_service_route
         - name: NPM_RUN_COMMAND
           valueFrom:
             configMapKeyRef:
